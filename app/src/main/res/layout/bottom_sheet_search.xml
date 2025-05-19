@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingHorizontal="@dimen/activity_horizontal_margin"
+    app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+    <ImageView
+        android:id="@+id/view_handle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_s"
+        android:background="@drawable/shape_view_handle"
+        app:layout_constraintBottom_toTopOf="@+id/et_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:background="@drawable/shape_edittext_background"
+        android:hint="@string/search_input_hint"
+        android:padding="@dimen/padding_s"
+        app:layout_constraintBottom_toTopOf="@+id/rv_search_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_handle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_search"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_search" />
+
+    <include
+        android:id="@+id/layout_no_data"
+        layout="@layout/layout_no_data" />
+
+
+    <include
+        android:id="@+id/layout_loading"
+        layout="@layout/layout_loading" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

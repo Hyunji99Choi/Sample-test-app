@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SampleApp</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="title_storage">보관함</string>
+    <string name="search_input_hint">검색할 내용을 입력하세요.</string>
+
+
+    <string name="saved_storage">저장된 보관함</string>
+    <string name="search_result">검색 결과</string>
+    <string name="get_fail_list_message">%s 목록을 가져오는데 실패하였습니다.</string>
+    <string name="no_list_data_message">%s(이)가 존재하지 않습니다.</string>
+
+</resources>
