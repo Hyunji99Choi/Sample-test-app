@@ -21,5 +21,4 @@ local.properties
 /.idea/migrations.xml
 /.idea/misc.xml
 /.idea/runConfigurations.xml
-/app/src/main/java/com/example/sampleapp/domain/model/SampleResult.kt
 /.idea/vcs.xml
