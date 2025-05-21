@@ -2,7 +2,6 @@ package com.example.sampleapp.domain.usecase
 
 import com.example.sampleapp.domain.model.SampleResult
 import com.example.sampleapp.domain.model.Search
-import com.example.sampleapp.domain.repository.SampleRepository
 import com.example.sampleapp.domain.repository.SearchRepository
 import javax.inject.Inject
 

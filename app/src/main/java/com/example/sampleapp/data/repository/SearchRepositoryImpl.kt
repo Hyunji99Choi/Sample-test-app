@@ -6,26 +6,18 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.example.sampleapp.data.database.CachingDatabase
-import com.example.sampleapp.data.database.StorageDataDao
-import com.example.sampleapp.data.database.StorageDatabase
 import com.example.sampleapp.data.datasource.BasePagingDataSource
-import com.example.sampleapp.data.datasource.SamplePagingDataSource
 import com.example.sampleapp.data.datasource.SearchPagingDataSource
 import com.example.sampleapp.data.datasource.SearchRemoteMediator
-import com.example.sampleapp.data.model.local.MemoryCachedData
 import com.example.sampleapp.data.model.local.toDomain
-import com.example.sampleapp.data.model.local.toEntity
 import com.example.sampleapp.data.model.remote.toDomain
 import com.example.sampleapp.data.network.SampleService
 import com.example.sampleapp.data.safeApiCall
 import com.example.sampleapp.domain.model.SampleResult
 import com.example.sampleapp.domain.model.Search
-import com.example.sampleapp.domain.repository.SampleRepository
 import com.example.sampleapp.domain.repository.SearchRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.withContext
 
 class SearchRepositoryImpl(
     private val api: SampleService,

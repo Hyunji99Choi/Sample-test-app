@@ -9,7 +9,7 @@ abstract class BasePagingDataSource<T: Any> (
 
 ): PagingSource<Int, T>() {
     companion object {
-        const val pagingSize = 10
+        const val pagingSize = 30
     }
 
     open protected val startKey = 0

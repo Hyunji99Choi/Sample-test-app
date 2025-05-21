@@ -6,22 +6,11 @@
     app:startDestination="@+id/navigation_storage">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.sampleapp.presentation.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.sampleapp.presentation.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_website"
+        android:name="com.example.sampleapp.presentation.ui.website.WebsiteFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_website" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.sampleapp.presentation.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/navigation_storage"
