@@ -9,10 +9,14 @@ import com.example.sampleapp.data.database.CachingDatabase
 import com.example.sampleapp.data.datasource.BasePagingDataSource
 import com.example.sampleapp.data.datasource.SearchPagingDataSource
 import com.example.sampleapp.data.datasource.SearchRemoteMediator
+import com.example.sampleapp.data.datasource.WebSearchPagingDataSource
+import com.example.sampleapp.data.model.local.SearchType
 import com.example.sampleapp.data.model.local.toDomain
 import com.example.sampleapp.data.model.remote.toDomain
 import com.example.sampleapp.data.network.SampleService
 import com.example.sampleapp.data.safeApiCall
+import com.example.sampleapp.domain.model.CategoryType
+import com.example.sampleapp.domain.model.ItemData
 import com.example.sampleapp.domain.model.SampleResult
 import com.example.sampleapp.domain.model.Search
 import com.example.sampleapp.domain.repository.SearchRepository
@@ -59,6 +63,24 @@ class SearchRepositoryImpl(
                 }
             }
 
+    }
+
+
+    override fun getWebSearchPagingData(search: String, type: CategoryType): Pager<Int, ItemData> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = BasePagingDataSource.pagingSize,
+                enablePlaceholders = false,
+                initialLoadSize = BasePagingDataSource.pagingSize
+            ),
+            pagingSourceFactory = {
+                WebSearchPagingDataSource(
+                    search = search,
+                    type = SearchType.from(type) ?: SearchType.WEB,
+                    apiService = api
+                )
+            }
+        )
     }
 
     override suspend fun getSearchImage(

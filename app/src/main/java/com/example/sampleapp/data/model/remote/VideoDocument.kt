@@ -1,10 +1,12 @@
 package com.example.sampleapp.data.model.remote
 
+import androidx.annotation.Keep
 import com.example.sampleapp.domain.model.DateType
 import com.example.sampleapp.domain.model.Search
 import com.google.gson.annotations.SerializedName
 import java.util.Date
 
+@Keep
 data class VideoDocument(
     @SerializedName("title")
     val title: String,            // 동영상 제목
