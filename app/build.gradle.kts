@@ -50,8 +50,12 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+        compose = true
 
         buildConfig = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
 }
 
@@ -73,9 +77,10 @@ dependencies {
     //hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
-    implementation("androidx.activity:activity-ktx:1.9.2")
-    implementation("androidx.fragment:fragment-ktx:1.8.3")
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.fragment.ktx)
 
 
     // Retrofit
@@ -111,6 +116,48 @@ dependencies {
     testImplementation(libs.androidx.paging.common)
     // optional - Jetpack Compose integration
     implementation(libs.androidx.paging.compose)
+
+
+    // compose
+    implementation(platform(libs.compose.bom))
+    androidTestImplementation(platform(libs.compose.bom))
+
+    // Choose one of the following:
+    // Material Design 3
+    implementation(libs.androidx.material3)
+    // or Material Design 2
+    implementation(libs.androidx.material)
+    // or skip Material Design and build directly on top of foundational components
+    implementation(libs.androidx.foundation)
+    // or only import the main APIs for the underlying toolkit systems,
+    // such as input and measurement/layout
+    implementation(libs.androidx.ui)
+
+    // Android Studio Preview support
+    implementation(libs.androidx.ui.tooling.preview)
+    debugImplementation(libs.androidx.ui.tooling)
+
+    // Optional - Included automatically by material, only add when you need
+    // the icons but not the material library (e.g. when using Material3 or a
+    // custom design system based on Foundation)
+    implementation(libs.androidx.material.icons.core)
+    // Optional - Add full set of material icons
+    implementation(libs.androidx.material.icons.extended)
+    // Optional - Add window size utils
+    implementation(libs.androidx.adaptive)
+
+    // Optional - Integration with activities
+    implementation(libs.androidx.activity.compose)
+    // Optional - Integration with ViewModels
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    // Optional - Integration with LiveData
+    implementation(libs.androidx.runtime.livedata)
+
+    // coil
+    implementation(libs.coil.compose)
+
+
+
 }
 
 fun getApiKey(propertyKey: String): String {
