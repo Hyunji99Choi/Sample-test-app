@@ -15,10 +15,14 @@ import com.example.sampleapp.data.model.local.toDomain
 import com.example.sampleapp.data.model.remote.toDomain
 import com.example.sampleapp.data.network.SampleService
 import com.example.sampleapp.data.safeApiCall
+import com.example.sampleapp.domain.model.BlogItemData
+import com.example.sampleapp.domain.model.CafeItemData
 import com.example.sampleapp.domain.model.CategoryType
 import com.example.sampleapp.domain.model.ItemData
 import com.example.sampleapp.domain.model.SampleResult
 import com.example.sampleapp.domain.model.Search
+import com.example.sampleapp.domain.model.SortType
+import com.example.sampleapp.domain.model.WebItemData
 import com.example.sampleapp.domain.repository.SearchRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -66,7 +70,11 @@ class SearchRepositoryImpl(
     }
 
 
-    override fun getWebSearchPagingData(search: String, type: CategoryType): Pager<Int, ItemData> {
+    override fun getWebSearchPagingData(
+        search: String,
+        sort: SortType,
+        type: CategoryType
+    ): Pager<Int, ItemData> {
         return Pager(
             config = PagingConfig(
                 pageSize = BasePagingDataSource.pagingSize,
@@ -76,9 +84,73 @@ class SearchRepositoryImpl(
             pagingSourceFactory = {
                 WebSearchPagingDataSource(
                     search = search,
+                    sort = sort,
                     type = SearchType.from(type) ?: SearchType.WEB,
                     apiService = api
                 )
+            }
+        )
+    }
+
+    override suspend fun getSearchBlog(
+        search: String,
+        sort: SortType,
+        page: Int,
+        size: Int
+    ): SampleResult<List<BlogItemData>> {
+        return safeApiCall(
+            call = {
+                api.getBlog(
+                    search,
+                    page = page,
+                    size = size,
+                    sort = sort.label
+                )
+            },
+            transform = { data ->
+                data.documents.map { it.toDomain() }
+            }
+        )
+    }
+
+    override suspend fun getSearchCafe(
+        search: String,
+        sort: SortType,
+        page: Int,
+        size: Int
+    ): SampleResult<List<CafeItemData>> {
+        return safeApiCall(
+            call = {
+                api.getCafe(
+                    search,
+                    page = page,
+                    size = size,
+                    sort = sort.label
+                )
+            },
+            transform = { data ->
+                data.documents.map { it.toDomain() }
+            }
+        )
+    }
+
+    override suspend fun getSearchWeb(
+        search: String,
+        sort: SortType,
+        page: Int,
+        size: Int
+    ): SampleResult<List<WebItemData>> {
+        return safeApiCall(
+            call = {
+                api.getWeb(
+                    search,
+                    page = page,
+                    size = size,
+                    sort = sort.label
+                )
+            },
+            transform = { data ->
+                data.documents.map { it.toDomain() }
             }
         )
     }
