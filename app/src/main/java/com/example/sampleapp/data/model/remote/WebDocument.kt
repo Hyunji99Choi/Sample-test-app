@@ -2,22 +2,22 @@ package com.example.sampleapp.data.model.remote
 
 import androidx.annotation.Keep
 import com.example.sampleapp.domain.model.WebItemData
-import kotlinx.serialization.SerialName
+import com.google.gson.annotations.SerializedName
 import java.util.Date
 
 
 @Keep
 data class WebDocument(
-    @SerialName("title")
+    @SerializedName("title")
     val title: String,
 
-    @SerialName("contents")
+    @SerializedName("contents")
     val contents: String,
 
-    @SerialName("url")
+    @SerializedName("url")
     val url: String,
 
-    @SerialName("datetime")
+    @SerializedName("datetime")
     val dateTime: Date
 )
 

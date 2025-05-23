@@ -30,7 +30,7 @@ data class ImageDocument(
     val docUrl: String?,             // 문서 URL
 
     @SerializedName("datetime")
-    val datetime: Date?     // 문서 작성시간, [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss].000+[tz]
+    val datetime: Date     // 문서 작성시간, [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss].000+[tz]
 )
 
 
@@ -39,6 +39,6 @@ fun ImageDocument.toDomain() = Search(
     title = displaySitename ?: "",
     imagePath = thumbnailUrl ?: "",
     url = docUrl ?: "",
-    date = datetime ?: Date(),
+    date = datetime,
     collection = collection
 )
