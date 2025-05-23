@@ -6,6 +6,7 @@
 
     <string name="title_storage">이미지/동영상 검색</string>
     <string name="search_input_hint">검색할 내용을 입력하세요.</string>
+    <string name="see_more_text">더보기</string>
 
 
     <string name="saved_storage">저장된 보관함</string>
