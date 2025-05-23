@@ -16,8 +16,8 @@ class GetWebSearchAllUseCase @Inject constructor(
 
     suspend operator fun invoke(
         search: String,
-        sort: SortType
-        // TODO error... function
+        sort: SortType,
+        errorFun: ((SampleResult<*>) -> Unit)? = null
     ): List<List<ItemData>> {
         val blog = repository.getSearchBlog(search, sort, startPage, pageSize)
         val cafe = repository.getSearchCafe(search, sort, startPage, pageSize)
@@ -31,7 +31,7 @@ class GetWebSearchAllUseCase @Inject constructor(
                 }
 
                 is SampleResult.Failure -> {
-                    // TODO error
+                    errorFun?.invoke(blog)
                 }
             }
 
@@ -41,7 +41,7 @@ class GetWebSearchAllUseCase @Inject constructor(
                 }
 
                 is SampleResult.Failure -> {
-                    // TODO error
+                    errorFun?.invoke(cafe)
                 }
             }
 
@@ -51,7 +51,7 @@ class GetWebSearchAllUseCase @Inject constructor(
                 }
 
                 is SampleResult.Failure -> {
-                    // TODO error
+                    errorFun?.invoke(web)
                 }
             }
         }
