@@ -1,6 +1,7 @@
 package com.example.sampleapp.presentation.ui
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -29,11 +30,25 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
+                R.id.navigation_website,
                 R.id.navigation_storage,
-                R.id.navigation_website
+
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.navigation_storage -> {
+                    binding.navView.visibility = View.GONE
+                }
+
+                else -> {
+                    binding.navView.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 }
