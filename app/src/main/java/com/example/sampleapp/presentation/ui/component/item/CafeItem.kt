@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.sampleapp.domain.model.CafeItemData
-import java.util.Date
+import com.example.sampleapp.domain.model.getFakeCafe
 
 @Composable
 fun CafeItem(item: CafeItemData) {
@@ -46,13 +46,6 @@ fun CafeItem(item: CafeItemData) {
 @Composable
 fun CafeItemPreview() {
     CafeItem(
-        item = CafeItemData(
-            title = "한여름 감성 카페 추천",
-            contents = "서울 근교 여름에 가기 좋은 카페 정리해봤어요.",
-            url = "https://example.com/cafe",
-            dateTime = Date(),
-            name = "감성카페러버",
-            thumbnail = "https://example.com/150"
-        )
+        item = getFakeCafe()
     )
 }

@@ -4,7 +4,7 @@ sealed class SampleResult<out T : Any> {
     data class Success<out T : Any>(val data: T) : SampleResult<T>()
     data class Failure(val error: SampleError) : SampleResult<Nothing>()
 }
-// TODO Git add 하기..
+
 sealed class SampleError {
     data class NetworkError(val message: String, val code: Int? = null) : SampleError()
     data class ApiError(val code: Int, val message: String) : SampleError()

@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.sampleapp.domain.model.BlogItemData
-import java.util.Date
+import com.example.sampleapp.domain.model.getFakeBlog
 
 @Composable
 fun BlogItem(item: BlogItemData) {
@@ -47,13 +47,6 @@ fun BlogItem(item: BlogItemData) {
 @Composable
 fun BlogItemPreview() {
     BlogItem(
-        item = BlogItemData(
-            title = "여름에 가기 좋은 실내 데이터 장소 추천",
-            contents = "올 여름에는 꼭 가야 할 장소를 지금 당장 소개합니다. 서울 명소, 야경, 카페, 이색카페..",
-            url = "https://example.com",
-            dateTime = Date(),
-            name = "여행 블로그",
-            thumbnail = "https://example.com/150"
-        )
+        item = getFakeBlog()
     )
 }
