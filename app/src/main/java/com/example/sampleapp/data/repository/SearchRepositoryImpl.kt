@@ -53,8 +53,9 @@ class SearchRepositoryImpl(
     override fun getSearchCachingPagingData(search: String): Flow<PagingData<Search>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 20,
-                enablePlaceholders = false
+                pageSize = 30,
+                enablePlaceholders = false,
+                initialLoadSize = 30
             ),
             remoteMediator = SearchRemoteMediator(search, api, database),
             pagingSourceFactory = {
