@@ -1,6 +1,5 @@
 package com.example.sampleapp.presentation.ui.storage
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +7,7 @@ import android.graphics.Color
 import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.sampleapp.databinding.FragmentStorageBinding
 import com.example.sampleapp.presentation.ui.BaseFragment
@@ -18,7 +18,6 @@ import com.example.sampleapp.presentation.util.StaggeredGridSpacingItemDecoratio
 import com.example.sampleapp.R
 import com.example.sampleapp.presentation.util.getPagingListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -162,8 +161,8 @@ class StorageFragment : BaseFragment<FragmentStorageBinding>() {
             // 검색 목록
             rvSearchList.apply {
                 adapter = searchAdapter
-                layoutManager = StaggeredGridLayoutManager(
-                    2, StaggeredGridLayoutManager.VERTICAL
+                layoutManager = GridLayoutManager(
+                    requireContext(), 2
                 )
                 addItemDecoration(
                     StaggeredGridSpacingItemDecoration(
@@ -211,7 +210,6 @@ class StorageFragment : BaseFragment<FragmentStorageBinding>() {
         }
 
 
-        // 현재는 사용되지 않는 에러 피드백
         repeatOnStarted(viewLifecycleOwner) {
             viewModel.error.collectLatest { error ->
                 displaySnackBar(error.second)
