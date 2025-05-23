@@ -11,7 +11,7 @@ import com.example.sampleapp.domain.model.getOrNull
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class WebSearchPagingDataSource( // TODO 분리할 수 있으면 분리하기
+class WebSearchPagingDataSource(
     private val search: String,
     private val sort: SortType,
     private val type: SearchType,
@@ -46,7 +46,7 @@ class WebSearchPagingDataSource( // TODO 분리할 수 있으면 분리하기
         }
     }
 
-
+    // TODO 커질 경우 분리하는 것도 좋아 보임. (OCP, SRP)
     private suspend fun getBlogData(
         search: String,
         position: Int,
